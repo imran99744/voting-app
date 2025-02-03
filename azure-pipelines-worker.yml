@@ -1,0 +1,50 @@
+# Build and push an image to Azure Container Registry
+
+trigger:
+  paths:
+    include:
+      - worker/*
+
+resources:
+  - repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: "72e08465-fd74-4172-a11b-cd8d315854ad"
+  imageRepository: "workerapp"
+  containerRegistry: "imranci.azurecr.io"
+  dockerfilePath: "$(Build.SourcesDirectory)/result/Dockerfile"
+  tag: "$(Build.BuildId)"
+
+pool:
+  name: "azureagent"
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+      - job: Build
+        displayName: Build
+        steps:
+          - task: Docker@2
+            displayName: Build an image
+            inputs:
+              containerRegistry: "$(dockerRegistryServiceConnection)"
+              repository: "$(imageRepository)"
+              command: "build"
+              Dockerfile: "worker/Dockerfile"
+              tags: "$(tag)"
+
+  - stage: Push
+    displayName: Push
+    jobs:
+      - job: Push
+        displayName: Push
+        steps:
+          - task: Docker@2
+            displayName: Push
+            inputs:
+              containerRegistry: "$(dockerRegistryServiceConnection)"
+              repository: "$(imageRepository)"
+              command: "push"
+              tags: "$(tag)"
