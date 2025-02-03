@@ -1,4 +1,4 @@
-# Azure DevOps CI/CD with ACR, AKS, and GitOps
+# Migration from GitHub Actions CI/CD to Azure DevOps with ACR, AKS, and GitOps (ArgoCD)
 
 ## Overview
 
@@ -14,3 +14,10 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 
 
 ![azure-devops-diagram](https://github.com/user-attachments/assets/66170e1c-06cc-49f8-b849-7746953a563b)
+
+## Prerequisites
+- Azure account with access to Azure DevOps, ACR, and AKS.
+- Docker installed locally (for building images).
+- Kubernetes CLI (`kubectl`) configured for AKS.
+- GitOps tool (FluxCD) installed in the AKS cluster.
+- Azure CLI for managing Azure resources.
