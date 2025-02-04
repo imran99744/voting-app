@@ -20,3 +20,10 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 - Kubernetes CLI (`kubectl`) configured for AKS.
 - GitOps tool (ArgoCD) installed in the AKS cluster.
 - Azure CLI for managing Azure resources.
+
+## Migration Steps
+- Setting up Azure DevOps.
+- Migrating CI/CD pipelines.
+- Configuring ACR and AKS.
+- Implementing GitOps (ArgoCD).
+- Deploying microservices.
