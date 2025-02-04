@@ -17,7 +17,6 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 
 ## Prerequisites
 - Azure account with access to Azure DevOps, ACR, and AKS.
-- Docker installed locally (for building images).
 - Kubernetes CLI (`kubectl`) configured for AKS.
-- GitOps tool (FluxCD) installed in the AKS cluster.
+- GitOps tool (ArgoCD) installed in the AKS cluster.
 - Azure CLI for managing Azure resources.
