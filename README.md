@@ -37,3 +37,8 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 ## GitOps Workflow
 - ArgoCD continuously syncs Kubernetes manifests from azure repos to the AKS cluster with a shell script automation (it checks the latest changes within every 10s).
 - Any changes to the manifests in the azure repos are automatically applied to the cluster.
+
+## Benefits of Migration
+- **Improved Integration**: Azure DevOps provides better integration with Azure services like ACR and AKS.
+- **Scalability**: AKS offers better scalability and management for Kubernetes workloads.
+- **GitOps Workflow**: ArgoCD enables continuous deployment and better version control for Kubernetes manifests.
