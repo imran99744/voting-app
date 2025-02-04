@@ -42,3 +42,27 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 - **Improved Integration**: Azure DevOps provides better integration with Azure services like ACR and AKS.
 - **Scalability**: AKS offers better scalability and management for Kubernetes workloads.
 - **GitOps Workflow**: ArgoCD enables continuous deployment and better version control for Kubernetes manifests.
+
+## Troubleshooting
+- **Issue**: Pipeline fails to push images to ACR.
+  - **Solution**: Ensure the ACR service connection in Azure DevOps is correctly configured.
+- **Issue**: ArgoCD fails to sync manifests.
+  - **Solution**: Verify the azure repo URL and credentials in the ArgoCD configuration.
+
+- **Issue**: Kubernetes pods fail to start and show an `ImagePullBackOff` error.
+- **Solution**:
+  - **Step 1**: Verify that the Docker image name and tag in the Kubernetes manifest are correct.
+  - **Step 2**: Ensure the AKS cluster has access to pull images from ACR.
+    - **Don't forget to create a Kubernetes Secret** to authenticate with ACR:
+      ```bash
+      kubectl create secret docker-registry acr-auth \
+        --docker-server=<ACR_NAME>.azurecr.io \
+        --docker-username=<SERVICE_PRINCIPAL_ID> \
+        --docker-password=<SERVICE_PRINCIPAL_PASSWORD> \
+        --docker-email=<YOUR_EMAIL>
+      ```
+    - Update the pod or deployment manifest to use the secret:
+      ```yaml
+      imagePullSecrets:
+        - name: acr-auth
+      ```
