@@ -27,3 +27,9 @@ This project demonstrates the migration of a CI/CD pipeline from GitHub Actions 
 - Configuring ACR and AKS.
 - Implementing GitOps (ArgoCD).
 - Deploying microservices.
+
+## CI/CD Pipeline Details
+
+- **Build Stage**: Builds Docker images for the 3 microservices (in 3 diffrent pipelines)
+- **Push Stage**: Pushes the Docker images to Azure Container Registry (ACR).
+- **Deploy Stage**: Deploys the microservices to AKS using Kubernetes manifests with shell script.
